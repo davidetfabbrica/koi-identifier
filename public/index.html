@@ -532,7 +532,9 @@
     <script>
         let allFish = JSON.parse(localStorage.getItem('koiFish')) || [];
         let currentSelectedId = null;
-        const API_BASE_URL = 'http://localhost:3001';
+        const API_BASE_URL = window.location.hostname.includes('localhost') 
+            ? 'http://localhost:3001'
+            : 'https://your-vercel-domain.vercel.app/api';
             
 
         const breeds = ['Kohaku', 'Sanke', 'Showa', 'Utsuri', 'Bekko', 'Asagi', 'Shusui', 'Tancho', 'Metallic', 'Matsuba', 'Kinginrin', 'Kawarimono', 'Unknown'];
