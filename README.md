@@ -27,7 +27,7 @@ koi-identifier/
 
 ### Prerequisites
 - Node.js 18+ installed
-- Anthropic API key (get from https://console.anthropic.com/)
+- Google API key (free from https://makersuite.google.com/app/apikey)
 
 ### Local Development
 
@@ -47,9 +47,9 @@ koi-identifier/
    cp .env.example .env
    ```
 
-4. **Add your API key to `.env`:**
+4. **Add your Google API key to `.env`:**
    ```
-   ANTHROPIC_API_KEY=sk-ant-your-actual-key-here
+   GOOGLE_API_KEY=your-actual-key-from-makersuite
    ```
 
 5. **Run the server:**
@@ -94,7 +94,7 @@ Follow the prompts and select your project.
 ### Environment Variables on Vercel
 
 In your Vercel project settings, add:
-- `ANTHROPIC_API_KEY` - Your Anthropic API key (marked as Secret)
+- `GOOGLE_API_KEY` - Your Google Gemini API key (marked as Secret)
 
 **Important:** Never expose your API key in code or commit `.env` file to Git.
 
@@ -182,7 +182,7 @@ Each time you spot a fish you've already cataloged:
 
 - **Backend**: Express.js, Node.js
 - **Frontend**: HTML5, CSS3, Vanilla JavaScript
-- **AI**: Anthropic Claude API (vision capabilities)
+- **AI**: Google Gemini API (free tier with Google account)
 - **Hosting**: Vercel (backend), Browser (frontend)
 - **Storage**: Browser LocalStorage (frontend)
 
@@ -202,10 +202,10 @@ Each time you spot a fish you've already cataloged:
 - Verify API key is set in `.env`
 - Check browser console for detailed error messages
 
-### "Invalid API key"
-- Verify your API key from https://console.anthropic.com/
-- Check it starts with `sk-ant-`
+### "Invalid API key or insufficient quota"
+- Verify your API key from https://makersuite.google.com/app/apikey
 - Make sure there are no extra spaces in `.env`
+- Check you have free quota remaining in your Google account
 
 ### Port 3001 already in use
 - Change the PORT in `.env` or use: `PORT=3002 npm start`
