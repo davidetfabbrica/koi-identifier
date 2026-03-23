@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Koi Identifier</title>
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;700&family=Lora:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,25 +13,22 @@
         }
         
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0f172a 100%);
+            font-family: 'Lora', serif;
+            background: #F1EFEB;
             min-height: 100vh;
-            color: #e0f2fe;
+            color: #1a1a18;
         }
         
         .container {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 24px;
+            padding: 40px 24px;
         }
         
         header {
-            background: rgba(15, 23, 42, 0.5);
-            border-bottom: 1px solid rgba(96, 165, 250, 0.2);
+            background: #F1EFEB;
+            border-bottom: 1px solid #E5E3DE;
             padding: 24px 0;
-            margin-bottom: 32px;
-            border-radius: 12px;
-            backdrop-filter: blur(10px);
             position: sticky;
             top: 0;
             z-index: 40;
@@ -50,69 +48,81 @@
             display: flex;
             align-items: center;
             gap: 16px;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+        
+        .header-title:hover {
+            opacity: 0.7;
+        }
+        
+        .header-logo {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
         }
         
         .header-title .emoji {
-            font-size: 40px;
+            font-size: 32px;
         }
         
         .header-title h1 {
-            font-size: 32px;
-            font-weight: bold;
-            background: linear-gradient(to right, #93c5fd, #06b6d4, #93c5fd);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            font-family: 'Shippori Mincho', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: #1a1a18;
+            letter-spacing: 0.5px;
         }
         
         button {
-            padding: 12px 20px;
+            padding: 12px 24px;
             border: none;
-            border-radius: 8px;
+            border-radius: 4px;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s;
-            font-size: 15px;
+            font-size: 14px;
+            font-family: 'Lora', serif;
         }
         
         .btn-primary {
-            background: linear-gradient(to right, #3b82f6, #06b6d4);
-            color: white;
-            box-shadow: 0 10px 25px rgba(6, 182, 212, 0.3);
+            background: #8B3A2A;
+            color: #F1EFEB;
         }
         
         .btn-primary:hover {
-            background: linear-gradient(to right, #2563eb, #0891b2);
-            box-shadow: 0 10px 30px rgba(6, 182, 212, 0.4);
+            background: #6b2d22;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(139, 58, 42, 0.2);
         }
         
         .btn-secondary {
-            background: rgba(30, 58, 95, 0.5);
-            border: 1px solid rgba(96, 165, 250, 0.3);
-            color: #93c5fd;
+            background: #E5E3DE;
+            color: #1a1a18;
+            border: 1px solid #D5D3CE;
         }
         
         .btn-secondary:hover {
-            background: rgba(30, 58, 95, 0.7);
+            background: #D5D3CE;
         }
         
         .btn-success {
-            background: #06b6d4;
-            color: white;
+            background: #8B3A2A;
+            color: #F1EFEB;
         }
         
         .btn-success:hover {
-            background: #0891b2;
+            background: #6b2d22;
         }
         
         .btn-danger {
-            background: rgba(127, 29, 29, 0.3);
-            border: 1px solid rgba(244, 63, 94, 0.3);
-            color: #fca5a5;
+            background: #E5E3DE;
+            color: #8B3A2A;
+            border: 1px solid #D5D3CE;
         }
         
         .btn-danger:hover {
-            background: rgba(127, 29, 29, 0.5);
+            background: #D5D3CE;
         }
         
         .search-filter {
@@ -129,35 +139,38 @@
         .search-wrapper input {
             width: 100%;
             padding: 12px 16px;
-            background: rgba(30, 58, 95, 0.3);
-            border: 1px solid rgba(96, 165, 250, 0.3);
-            border-radius: 8px;
-            color: #e0f2fe;
-            font-size: 15px;
+            background: white;
+            border: 1px solid #D5D3CE;
+            border-radius: 4px;
+            color: #1a1a18;
+            font-size: 14px;
+            font-family: 'Lora', serif;
         }
         
         .search-wrapper input::placeholder {
-            color: rgba(147, 197, 253, 0.4);
+            color: #999;
         }
         
         .search-wrapper input:focus {
             outline: none;
-            border-color: rgba(6, 182, 212, 0.5);
-            background: rgba(30, 58, 95, 0.5);
+            border-color: #8B3A2A;
+            box-shadow: 0 0 0 3px rgba(139, 58, 42, 0.1);
         }
         
         select {
             padding: 12px 16px;
-            background: rgba(30, 58, 95, 0.3);
-            border: 1px solid rgba(96, 165, 250, 0.3);
-            border-radius: 8px;
-            color: #e0f2fe;
-            font-size: 15px;
+            background: white;
+            border: 1px solid #D5D3CE;
+            border-radius: 4px;
+            color: #1a1a18;
+            font-size: 14px;
+            font-family: 'Lora', serif;
         }
         
         select:focus {
             outline: none;
-            border-color: rgba(6, 182, 212, 0.5);
+            border-color: #8B3A2A;
+            box-shadow: 0 0 0 3px rgba(139, 58, 42, 0.1);
         }
         
         .empty-state {
@@ -166,13 +179,14 @@
         }
         
         .empty-state h2 {
+            font-family: 'Shippori Mincho', serif;
             font-size: 24px;
-            color: rgba(191, 219, 254, 0.7);
+            color: #1a1a18;
             margin-bottom: 16px;
         }
         
         .empty-state p {
-            color: rgba(147, 197, 253, 0.5);
+            color: #666;
             margin-bottom: 32px;
             font-size: 16px;
         }
@@ -185,84 +199,76 @@
         }
         
         .fish-card {
-            background: linear-gradient(to bottom right, rgba(30, 58, 95, 0.4), rgba(30, 41, 59, 0.2));
-            border: 1px solid rgba(96, 165, 250, 0.2);
-            border-radius: 12px;
+            background: white;
+            border: 1px solid #E5E3DE;
+            border-radius: 4px;
             padding: 16px;
             cursor: pointer;
             transition: all 0.3s;
         }
         
         .fish-card:hover {
-            border-color: rgba(6, 182, 212, 0.5);
-            background: rgba(30, 58, 95, 0.6);
-            box-shadow: 0 10px 25px rgba(6, 182, 212, 0.1);
+            border-color: #8B3A2A;
+            box-shadow: 0 8px 24px rgba(139, 58, 42, 0.1);
             transform: translateY(-4px);
         }
         
         .fish-image {
             width: 100%;
             height: 200px;
-            border-radius: 8px;
+            border-radius: 4px;
             object-fit: cover;
             margin-bottom: 16px;
-            background: rgba(30, 58, 95, 0.5);
+            background: #E5E3DE;
         }
         
         .fish-name {
-            font-size: 18px;
-            font-weight: bold;
-            color: #e0f2fe;
+            font-family: 'Shippori Mincho', serif;
+            font-size: 16px;
+            font-weight: 700;
+            color: #1a1a18;
             margin-bottom: 4px;
         }
         
         .fish-id {
-            font-size: 13px;
-            color: rgba(147, 197, 253, 0.7);
+            font-size: 12px;
+            color: #999;
             margin-bottom: 12px;
         }
         
         .badge {
             display: inline-block;
             padding: 6px 12px;
-            border-radius: 9999px;
+            border-radius: 20px;
             font-size: 12px;
             font-weight: 600;
             margin-right: 8px;
             margin-bottom: 8px;
-        }
-        
-        .badge-breed {
-            background: rgba(6, 182, 212, 0.2);
-            border: 1px solid rgba(6, 182, 212, 0.3);
-            color: #67e8f9;
-        }
-        
-        .badge-sightings {
-            background: rgba(59, 130, 246, 0.2);
-            border: 1px solid rgba(59, 130, 246, 0.3);
-            color: #93c5fd;
+            background: #F5F3EE;
+            color: #8B3A2A;
+            border: 1px solid #E5E3DE;
         }
         
         .fish-markings {
-            font-size: 13px;
-            color: rgba(147, 197, 253, 0.6);
+            font-size: 12px;
+            color: #666;
             font-style: italic;
         }
         
         .form {
-            background: linear-gradient(to bottom right, rgba(30, 58, 95, 0.4), rgba(30, 41, 59, 0.2));
-            border: 1px solid rgba(96, 165, 250, 0.3);
-            border-radius: 12px;
+            background: white;
+            border: 1px solid #E5E3DE;
+            border-radius: 4px;
             padding: 40px;
             max-width: 700px;
             margin: 0 auto;
         }
         
         .form h2 {
+            font-family: 'Shippori Mincho', serif;
             font-size: 28px;
-            font-weight: bold;
-            color: #e0f2fe;
+            font-weight: 700;
+            color: #1a1a18;
             margin-bottom: 32px;
         }
         
@@ -272,10 +278,10 @@
         
         .form-group label {
             display: block;
-            color: #93c5fd;
+            color: #1a1a18;
             font-weight: 600;
             margin-bottom: 8px;
-            font-size: 15px;
+            font-size: 14px;
         }
         
         .form-group input,
@@ -283,20 +289,20 @@
         .form-group select {
             width: 100%;
             padding: 12px 16px;
-            background: rgba(30, 58, 95, 0.3);
-            border: 1px solid rgba(96, 165, 250, 0.3);
-            border-radius: 8px;
-            color: #e0f2fe;
-            font-size: 15px;
-            font-family: inherit;
+            background: white;
+            border: 1px solid #D5D3CE;
+            border-radius: 4px;
+            color: #1a1a18;
+            font-size: 14px;
+            font-family: 'Lora', serif;
         }
         
         .form-group input:focus,
         .form-group textarea:focus,
         .form-group select:focus {
             outline: none;
-            border-color: rgba(6, 182, 212, 0.5);
-            background: rgba(30, 58, 95, 0.5);
+            border-color: #8B3A2A;
+            box-shadow: 0 0 0 3px rgba(139, 58, 42, 0.1);
         }
         
         .form-group textarea {
@@ -315,19 +321,19 @@
         }
         
         .upload-area {
-            border: 2px dashed rgba(96, 165, 250, 0.3);
-            border-radius: 8px;
+            border: 2px dashed #D5D3CE;
+            border-radius: 4px;
             padding: 32px;
             text-align: center;
             cursor: pointer;
-            background: rgba(30, 58, 95, 0.2);
+            background: #FAFAF8;
             transition: all 0.3s;
-            color: #93c5fd;
+            color: #666;
         }
         
         .upload-area:hover {
-            border-color: rgba(6, 182, 212, 0.5);
-            background: rgba(30, 58, 95, 0.4);
+            border-color: #8B3A2A;
+            background: #F5F3EE;
         }
         
         .upload-area input[type="file"] {
@@ -337,57 +343,154 @@
         .preview-image {
             width: 100%;
             max-height: 300px;
-            border-radius: 8px;
+            border-radius: 4px;
             object-fit: cover;
             margin-top: 16px;
         }
         
         .analysis-result {
             padding: 16px;
-            border-radius: 8px;
+            border-radius: 4px;
             margin-top: 16px;
             font-size: 14px;
         }
         
         .analysis-result.loading {
-            background: rgba(59, 130, 246, 0.2);
-            border: 1px solid rgba(59, 130, 246, 0.3);
-            color: #93c5fd;
+            background: #F5F3EE;
+            border: 1px solid #D5D3CE;
+            color: #1a1a18;
         }
         
         .analysis-result.success {
-            background: rgba(34, 197, 94, 0.2);
-            border: 1px solid rgba(34, 197, 94, 0.3);
-            color: #86efac;
+            background: #F0EBE6;
+            border: 1px solid #E5D9CC;
+            color: #6b2d22;
         }
         
         .analysis-result.warning {
-            background: rgba(251, 146, 60, 0.2);
-            border: 1px solid rgba(251, 146, 60, 0.3);
-            color: #fed7aa;
+            background: #FEF3EB;
+            border: 1px solid #F0E3D8;
+            color: #8B3A2A;
         }
         
         .analysis-result.error {
-            background: rgba(244, 63, 94, 0.2);
-            border: 1px solid rgba(244, 63, 94, 0.3);
-            color: #fca5a5;
+            background: #FBE5E3;
+            border: 1px solid #F5D7D3;
+            color: #8B3A2A;
         }
         
         .hidden {
             display: none;
+        }
+        
+        .detail-view {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .detail-card {
+            background: white;
+            border: 1px solid #E5E3DE;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .detail-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            padding: 32px;
+        }
+        
+        @media (max-width: 768px) {
+            .detail-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .detail-image {
+            width: 100%;
+            height: 300px;
+            border-radius: 4px;
+            object-fit: cover;
+            background: #E5E3DE;
+        }
+        
+        .detail-info h1 {
+            font-family: 'Shippori Mincho', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: #1a1a18;
+            margin-bottom: 16px;
+        }
+        
+        .detail-info h3 {
+            font-family: 'Shippori Mincho', serif;
+            font-size: 14px;
+            font-weight: 700;
+            color: #1a1a18;
+            margin-top: 20px;
+            margin-bottom: 8px;
+        }
+        
+        .detail-info p {
+            color: #1a1a18;
+            font-size: 14px;
+        }
+        
+        .sighting-item {
+            padding: 8px 0;
+            border-bottom: 1px solid #E5E3DE;
+            font-size: 12px;
+        }
+        
+        .sighting-item:last-child {
+            border-bottom: none;
+        }
+        
+        .detail-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 24px;
+        }
+        
+        .detail-buttons button {
+            width: 100%;
         }
     </style>
 </head>
 <body>
     <header>
         <div class="header-content">
-            <div class="header-title">
-                <div class="emoji">🐠</div>
-                <div>
-                    <h1>Koi Identifier</h1>
-                </div>
+            <div class="header-title" onclick="showMainView()">
+                <svg class="header-logo" viewBox="0 0 1512 1512" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
+                    <g transform="matrix(1,0,0,1,0,-633)">
+                        <g id="Primary" transform="matrix(2.003409,0,0,2.347533,0,-554.851519)">
+                            <g transform="matrix(1.82546,0,0,1.557867,-547.285869,-374.870048)">
+                                <g>
+                                    <path d="M579.199,769L643,769.5" style="fill:none;stroke:rgb(26,26,24);stroke-width:1.71px;"/>
+                                    <path d="M556,768.974L569,768.974" style="fill:none;stroke:rgb(26,26,24);stroke-width:1.71px;"/>
+                                    <path d="M531,768.974L544,768.974" style="fill:none;stroke:rgb(26,26,24);stroke-width:1.71px;"/>
+                                    <path d="M469.68,769L482.36,769" style="fill:none;stroke:rgb(26,26,24);stroke-width:1.71px;"/>
+                                    <path d="M445,769L457.68,769" style="fill:none;stroke:rgb(26,26,24);stroke-width:1.71px;"/>
+                                    <g id="Vector" transform="matrix(0.276637,0,0,0.276637,295.99081,388.467648)">
+                                        <circle cx="760.959" cy="1377.375" r="431.975" style="fill:none;stroke:black;stroke-width:6.18px;"/>
+                                    </g>
+                                    <path d="M457,662C457,662 507.446,706.49 509,769C508.581,806.092 486.021,848.487 457,876C451.841,867.396 431.916,812.181 433,769C434.023,737.353 443.258,685.055 457,662Z" style="fill:none;stroke:black;stroke-width:1.71px;"/>
+                                    <g transform="matrix(1,0,0,1,0.099739,-0.026372)">
+                                        <ellipse cx="506" cy="769" rx="3.142" ry="3.153" style="fill:rgb(26,26,24);stroke:rgb(26,26,24);stroke-width:1.71px;"/>
+                                    </g>
+                                    <path d="M556.2,660.776C556.2,660.776 581.877,716.921 581,769C580.998,796.583 572.351,849.117 556,878.644C538.604,832.895 533.918,798.786 534,769C533.249,754.032 537.888,697.436 556.2,660.776Z" style="fill:none;stroke:rgb(26,26,24);stroke-width:1.71px;"/>
+                                    <path d="M372,769L434,769" style="fill:none;stroke:rgb(26,26,24);stroke-width:1.71px;"/>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </svg>
+                <h1>Koi Identifier</h1>
             </div>
-            <button class="btn-primary" onclick="showAddForm()">+ Add Fish</button>
+            <div id="headerButton"></div>
         </div>
     </header>
 
@@ -484,44 +587,45 @@
 
         <!-- Detail View -->
         <div id="detailView" class="hidden">
-            <button style="color: #93c5fd; background: none; border: none; cursor: pointer; margin-bottom: 24px; font-size: 15px;" onclick="showMainView()">← Back to Collection</button>
-            
-            <div style="background: linear-gradient(to bottom right, rgba(30, 58, 95, 0.4), rgba(30, 41, 59, 0.2)); border: 1px solid rgba(96, 165, 250, 0.3); border-radius: 12px; overflow: hidden;">
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px; padding: 32px;">
-                    <div>
-                        <img id="detailImage" class="hidden" style="width: 100%; border-radius: 8px; margin-bottom: 16px;">
-                        <div style="background: rgba(30, 58, 95, 0.3); border: 1px solid rgba(96, 165, 250, 0.3); border-radius: 8px; padding: 16px; color: rgba(147, 197, 253, 0.7); font-size: 13px;">
-                            <p style="font-weight: 600; color: #93c5fd; margin-bottom: 8px;">Collection Info</p>
-                            <p>Added: <span id="detailDateAdded"></span></p>
-                            <p>Fish ID: <span id="detailFishId"></span></p>
-                            <p>Times spotted: <span id="detailSightings"></span></p>
+            <div class="detail-view">
+                <div class="detail-card">
+                    <div class="detail-content">
+                        <div>
+                            <img id="detailImage" class="detail-image hidden">
+                            <div style="background: white; border: 1px solid #E5E3DE; border-radius: 4px; padding: 16px; margin-top: 16px; font-size: 13px;">
+                                <p style="font-weight: 600; color: #1a1a18; margin-bottom: 8px;">Collection Info</p>
+                                <p>Added: <span id="detailDateAdded"></span></p>
+                                <p>Fish ID: <span id="detailFishId"></span></p>
+                                <p>Times spotted: <span id="detailSightings"></span></p>
+                            </div>
                         </div>
-                    </div>
-                    
-                    <div>
-                        <h1 id="detailName" style="font-size: 32px; font-weight: bold; color: #e0f2fe; margin-bottom: 16px;"></h1>
-                        <div style="margin-bottom: 24px;">
-                            <span class="badge badge-breed" id="detailBreed"></span>
-                        </div>
+                        
+                        <div class="detail-info">
+                            <h1 id="detailName"></h1>
+                            <div style="margin-bottom: 24px;">
+                                <span class="badge" id="detailBreed"></span>
+                            </div>
 
-                        <div id="detailMarkingsSection" class="hidden" style="margin-bottom: 24px;">
-                            <h3 style="color: #93c5fd; font-weight: 600; margin-bottom: 8px;">Distinctive Markings</h3>
-                            <p id="detailMarkings" style="color: #bfdbfe;"></p>
-                        </div>
+                            <div id="detailMarkingsSection" class="hidden">
+                                <h3>Distinctive Markings</h3>
+                                <p id="detailMarkings"></p>
+                            </div>
 
-                        <div id="detailNotesSection" class="hidden" style="margin-bottom: 24px;">
-                            <h3 style="color: #93c5fd; font-weight: 600; margin-bottom: 8px;">Notes</h3>
-                            <p id="detailNotes" style="color: #bfdbfe;"></p>
-                        </div>
+                            <div id="detailNotesSection" class="hidden">
+                                <h3>Notes</h3>
+                                <p id="detailNotes"></p>
+                            </div>
 
-                        <div id="detailSightingsSection" class="hidden" style="margin-bottom: 24px;">
-                            <h3 style="color: #93c5fd; font-weight: 600; margin-bottom: 8px;">Sighting History</h3>
-                            <div id="detailSightingsList" style="font-size: 13px; color: #bfdbfe;"></div>
-                        </div>
+                            <div id="detailSightingsSection" class="hidden">
+                                <h3>Sighting History</h3>
+                                <div id="detailSightingsList"></div>
+                            </div>
 
-                        <div style="display: flex; flex-direction: column; gap: 12px;">
-                            <button class="btn-success" onclick="logSighting()">Log Sighting</button>
-                            <button class="btn-danger" onclick="deleteFish()">Delete</button>
+                            <div class="detail-buttons">
+                                <button class="btn-success" onclick="logSighting()">Log Sighting</button>
+                                <button class="btn-primary" onclick="showMainView()">← Collection</button>
+                                <button class="btn-danger" onclick="deleteFish()">Delete</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -530,43 +634,92 @@
     </div>
 
     <script>
-        let allFish = JSON.parse(localStorage.getItem('koiFish')) || [];
+        let allFish = [];
         let currentSelectedId = null;
         const API_BASE_URL = window.location.hostname.includes('localhost') 
             ? 'http://localhost:3001'
-            : 'https://koi-identifier.vercel.app/api';
-            
+            : '/api';
 
         const breeds = ['Kohaku', 'Sanke', 'Showa', 'Utsuri', 'Bekko', 'Asagi', 'Shusui', 'Tancho', 'Metallic', 'Matsuba', 'Kinginrin', 'Kawarimono', 'Unknown'];
+
+        // Load fish from backend on page load
+        async function loadFish() {
+            try {
+                const response = await fetch(`${API_BASE_URL}/api/fish`);
+                if (response.ok) {
+                    allFish = await response.json();
+                } else {
+                    console.error('Failed to load fish from backend');
+                    allFish = [];
+                }
+            } catch (err) {
+                console.error('Error loading fish:', err);
+                allFish = [];
+            }
+            renderFish();
+            updateHeaderButton('main');
+        }
 
         function saveFish(e) {
             e.preventDefault();
             
             const newFish = {
-                id: Date.now(),
                 name: document.getElementById('fishName').value,
                 breed: document.getElementById('fishBreed').value,
                 markings: document.getElementById('fishMarkings').value,
                 notes: document.getElementById('fishNotes').value,
                 photoUrl: document.getElementById('photoPreview').src || null,
-                dateAdded: new Date().toLocaleDateString(),
-                sightings: [{ date: new Date().toLocaleDateString(), location: 'Initial upload' }]
+                dateAdded: new Date().toLocaleDateString()
             };
 
-            allFish.push(newFish);
-            localStorage.setItem('koiFish', JSON.stringify(allFish));
-            
-            // Reset form
-            document.getElementById('fishName').value = '';
-            document.getElementById('fishBreed').value = 'Unknown';
-            document.getElementById('fishMarkings').value = '';
-            document.getElementById('fishNotes').value = '';
-            document.getElementById('photoPreview').src = '';
-            document.getElementById('photoPreview').classList.add('hidden');
-            document.getElementById('photoInput').value = '';
-            document.getElementById('analysisResult').classList.add('hidden');
-            
-            showMainView();
+            // POST to backend database
+            fetch(`${API_BASE_URL}/api/fish`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(newFish)
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.error) {
+                    alert('Error saving fish: ' + data.error);
+                    return;
+                }
+                
+                // Log initial sighting and WAIT for it to complete
+                const initialSighting = {
+                    date: new Date().toLocaleDateString(),
+                    location: 'Initial upload'
+                };
+                
+                return fetch(`${API_BASE_URL}/api/fish/${data.id}/sighting`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(initialSighting)
+                });
+            })
+            .then(res => {
+                // Reset form
+                document.getElementById('fishName').value = '';
+                document.getElementById('fishBreed').value = 'Unknown';
+                document.getElementById('fishMarkings').value = '';
+                document.getElementById('fishNotes').value = '';
+                document.getElementById('photoPreview').src = '';
+                document.getElementById('photoPreview').classList.add('hidden');
+                document.getElementById('photoInput').value = '';
+                document.getElementById('analysisResult').classList.add('hidden');
+                
+                // Reload fish from database and show collection
+                loadFish();
+                showMainView();
+            })
+            .catch(err => {
+                console.error('Error saving fish:', err);
+                alert('Network error saving fish');
+            });
         }
 
         function previewPhoto(e) {
@@ -578,7 +731,6 @@
                     preview.src = event.target.result;
                     preview.classList.remove('hidden');
                     
-                    // Analyze the photo
                     analyzePhotoForDuplicates(event.target.result);
                 };
                 reader.readAsDataURL(file);
@@ -588,13 +740,23 @@
         async function analyzePhotoForDuplicates(photoDataUrl) {
             const analysisResult = document.getElementById('analysisResult');
             
+            // Determine image type from base64 header
+            let mediaType = 'image/jpeg';
+            if (photoDataUrl.startsWith('data:image/png')) {
+                mediaType = 'image/png';
+            } else if (photoDataUrl.startsWith('data:image/gif')) {
+                mediaType = 'image/gif';
+            } else if (photoDataUrl.startsWith('data:image/webp')) {
+                mediaType = 'image/webp';
+            }
+
+            const base64Image = photoDataUrl.split(',')[1];
+
             // Show loading state
             analysisResult.innerHTML = '<div class="analysis-result loading">🔍 Analyzing photo...</div>';
             analysisResult.classList.remove('hidden');
 
             try {
-                const base64Image = photoDataUrl.split(',')[1];
-
                 const response = await fetch(`${API_BASE_URL}/api/analyze-koi`, {
                     method: 'POST',
                     headers: {
@@ -618,8 +780,10 @@
                     analysisResult.innerHTML = `<div class="analysis-result success">
                         <strong>✓ New Fish Detected!</strong><br>
                         Features: ${analysis.description}<br>
+                        <strong>Suggested Breed:</strong> ${analysis.suggestedBreed}<br>
                         <em style="opacity: 0.8;">Confidence: ${analysis.confidence}%</em>
                     </div>`;
+                    document.getElementById('fishBreed').value = analysis.suggestedBreed;
                 } else {
                     analysisResult.innerHTML = `<div class="analysis-result warning">
                         <strong>⚠️ Possible Match: ${analysis.matchedFishId}</strong><br>
@@ -631,6 +795,15 @@
             } catch (error) {
                 console.error('Photo analysis error:', error);
                 analysisResult.innerHTML = '<div class="analysis-result error">⚠️ Network error analyzing photo. You can still add the fish manually.</div>';
+            }
+        }
+
+        function updateHeaderButton(view) {
+            const headerButton = document.getElementById('headerButton');
+            if (view === 'main') {
+                headerButton.innerHTML = '<button class="btn-primary" onclick="showAddForm()">+ Add Fish</button>';
+            } else if (view === 'add' || view === 'detail') {
+                headerButton.innerHTML = '<button class="btn-primary" onclick="showMainView()">← Collection</button>';
             }
         }
 
@@ -652,7 +825,7 @@
             searchFilter.classList.remove('hidden');
 
             if (filtered.length === 0) {
-                container.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 60px; color: rgba(147, 197, 253, 0.5);">No matches found</div>';
+                container.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 60px; color: #999;">No matches found</div>';
                 return;
             }
 
@@ -662,8 +835,8 @@
                     <div class="fish-name">${fish.name}</div>
                     <div class="fish-id">ID: ${fish.id}</div>
                     <div>
-                        <span class="badge badge-breed">${fish.breed}</span>
-                        ${fish.sightings && fish.sightings.length > 1 ? `<span class="badge badge-sightings">${fish.sightings.length} sightings</span>` : ''}
+                        <span class="badge">${fish.breed}</span>
+                        ${fish.sightings && fish.sightings.length > 1 ? `<span class="badge">${fish.sightings.length} sightings</span>` : ''}
                     </div>
                     ${fish.markings ? `<div class="fish-markings">${fish.markings}</div>` : ''}
                 </div>
@@ -689,6 +862,7 @@
             document.getElementById('mainView').classList.add('hidden');
             document.getElementById('detailView').classList.add('hidden');
             document.getElementById('addFormView').classList.remove('hidden');
+            updateHeaderButton('add');
         }
 
         function showMainView() {
@@ -696,6 +870,7 @@
             document.getElementById('detailView').classList.add('hidden');
             document.getElementById('mainView').classList.remove('hidden');
             renderFish();
+            updateHeaderButton('main');
         }
 
         function showDetail(id) {
@@ -732,7 +907,7 @@
 
             if (fish.sightings && fish.sightings.length > 0) {
                 document.getElementById('detailSightingsList').innerHTML = fish.sightings.map(s => 
-                    `<div style="padding: 8px 0; border-bottom: 1px solid rgba(96, 165, 250, 0.1);">• ${s.date} - ${s.location}</div>`
+                    `<div class="sighting-item">• ${s.date} - ${s.location}</div>`
                 ).join('');
                 document.getElementById('detailSightingsSection').classList.remove('hidden');
             } else {
@@ -742,31 +917,64 @@
             document.getElementById('mainView').classList.add('hidden');
             document.getElementById('addFormView').classList.add('hidden');
             document.getElementById('detailView').classList.remove('hidden');
+            updateHeaderButton('detail');
         }
 
         function logSighting() {
-            const fish = allFish.find(f => f.id === currentSelectedId);
-            if (fish) {
-                if (!fish.sightings) fish.sightings = [];
-                fish.sightings.push({
-                    date: new Date().toLocaleDateString(),
-                    location: 'Park'
-                });
-                localStorage.setItem('koiFish', JSON.stringify(allFish));
+            const sighting = {
+                date: new Date().toLocaleDateString(),
+                location: 'Park'
+            };
+
+            fetch(`${API_BASE_URL}/api/fish/${currentSelectedId}/sighting`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(sighting)
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.error) {
+                    alert('Error logging sighting: ' + data.error);
+                    return;
+                }
+                // Reload fish data to show updated sightings
+                loadFish();
                 showDetail(currentSelectedId);
-            }
+            })
+            .catch(err => {
+                console.error('Error logging sighting:', err);
+                alert('Network error logging sighting');
+            });
         }
 
         function deleteFish() {
             if (confirm('Are you sure you want to delete this fish?')) {
-                allFish = allFish.filter(f => f.id !== currentSelectedId);
-                localStorage.setItem('koiFish', JSON.stringify(allFish));
-                showMainView();
+                fetch(`${API_BASE_URL}/api/fish/${currentSelectedId}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    }
+                })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.error) {
+                        alert('Error deleting fish: ' + data.error);
+                        return;
+                    }
+                    loadFish();
+                    showMainView();
+                })
+                .catch(err => {
+                    console.error('Error deleting fish:', err);
+                    alert('Network error deleting fish');
+                });
             }
         }
 
-        // Initial render
-        showMainView();
+        // Initial render - load fish from backend
+        loadFish();
     </script>
 </body>
 </html>
